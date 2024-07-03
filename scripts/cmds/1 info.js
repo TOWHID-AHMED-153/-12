@@ -61,17 +61,17 @@ module.exports = {
 ≡≡║Bot & Owner Info║≡≡
 ﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
 
-➠Bot Name↠ ${botName}
+➠Bot Name↠ ${𝐐𝐮𝐞𝐞𝐧}
 
-➠Bot Prefix↠ ${botPrefix}
+➠Bot Prefix↠ ${,}
 
-➠Owner Name↠ ${authorName}
+➠Owner Name↠ $𝐌𝐑 𝐓𝐎𝐔𝐇𝐈𝐃}
 
-➠Facebook↠ ${authorFB}
+➠Facebook↠ ${https://www.facebook.com/XmaskingNowpara?mibextid=ZbWKwL}
 
 ➠Instagram↠ ${authorInsta}
 
-➠Status↠ ${status}
+➠Status↠ ${𝐒𝐢𝐧𝐠𝐥𝐞 𝐏𝐫𝐨 𝐌𝐚𝐱}
 
 ➠Date↠ ${date}
 
@@ -82,7 +82,7 @@ module.exports = {
 ﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
 Thanks for using ↠ \➪${botName}
 ﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
-      attachment: await global.utils.getStreamFromURL(link)
+      attachment:https://i.imgur.com/9KpDx4P.mp4(link)
     });
   }
 };
