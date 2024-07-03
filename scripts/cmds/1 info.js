@@ -1,88 +1,64 @@
+const axios = require('axios');
 const fs = require('fs');
-const moment = require('moment-timezone');
+const path = require('path');
 
 module.exports = {
-  config: {
-    name: "info",
-    aliases: ["inf", "in4"],
-    version: "2.0",
-    author: "MR.AYAN",
-    countDown: 5,
-    role: 0,
-    shortDescription: {
-      vi: "",
-      en: "Sends information about the bot and admin along with an image."
-    },
-    longDescription: {
-      vi: "",
-      en: "Sends information about the bot and admin along with an image."
-    },
-    category: "Information",
-    guide: {
-      en: "{pn}"
-    },
-    envConfig: {}
-  },
+config: {
+  name: "owner",
+  aurthor:"MR.AYAN",// Convert By Goatbot MR.AYAN 
+   role: 0,
+  shortDescription: " ",
+  longDescription: "",
+  category: "admin",
+  guide: "{pn}"
+},
 
-  onStart: async function ({ message }) {
-    this.sendInfo(message);
-  },
+  onStart: async function ({ api, event }) {
+  try {
+    const ownerInfo = {
+      name: 'TAUHID',
+      gender: 'MALE',
+      age: '18+',
+      height: 'secret',
+      facebookLink: 'https://www.facebook.com/XmaskingNowpara',
+      nick: 'TAUHID'
+    };
 
-  onChat: async function ({ event, message }) {
-    if (event.body && event.body.toLowerCase() === "info") {
-      this.sendInfo(message);
+    const bold = 'https://i.imgur.com/Fkch0XM.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
+
+    const tmpFolderPath = path.join(__dirname, 'tmp');
+
+    if (!fs.existsSync(tmpFolderPath)) {
+      fs.mkdirSync(tmpFolderPath);
     }
-  },
 
-  sendInfo: async function (message) {
-    const botName = "♡︎𝗠𝗜𝗥𝗔 𝗞𝗜𝗠 𝗥𝗢𝗕𝗢𝗧♡︎";
-    const botPrefix = ".";
-    const authorName = "𝗠𝗥.𝗔𝗬𝗔𝗡";
-    const authorFB = "https://m.me/NOOBS.DEVELOPER.AYAN";
-    const authorInsta = "secret";
-    const status = "𝗣𝘂𝗿𝗲 𝗦𝗶𝗻𝗴𝗹𝗲";
+    const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
+    const videoPath = path.join(tmpFolderPath, 'owner_video.gif');
 
-    const urls = JSON.parse(fs.readFileSync('scripts/cmds/assets/info.json'));
-    const link = urls[Math.floor(Math.random() * urls.length)];
+    fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
 
-    const now = moment().tz('Asia/Dhaka');
-    const date = now.format('MMMM Do YYYY');
-    const time = now.format('h:mm:ss A');
+    const response = `
+Owner Information:🧾
+Name: ${ownerInfo.name}
+Gender: ${ownerInfo.gender}
+Age: ${ownerInfo.age}
+Height: ${ownerInfo.height}
+Facebook: ${ownerInfo.facebookLink}
+Nick: ${ownerInfo.nick}
+`;
 
-    const uptime = process.uptime();
-    const seconds = Math.floor(uptime % 60);
-    const minutes = Math.floor((uptime / 60) % 60);
-    const hours = Math.floor((uptime / (60 * 60)) % 24);
-    const days = Math.floor(uptime / (60 * 60 * 24));
-    const uptimeString = `${hours}h ${minutes}m ${seconds}sec`;
 
-    message.reply({
-      body: `
-≡≡║Bot & Owner Info║≡≡
-﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+    await api.sendMessage({
+      body: response,
+      attachment: fs.createReadStream(videoPath)
+    }, event.threadID, event.messageID);
 
-➠Bot Name↠ ${𝐐𝐮𝐞𝐞𝐧}
-
-➠Bot Prefix↠ ${,}
-
-➠Owner Name↠ $𝐌𝐑 𝐓𝐎𝐔𝐇𝐈𝐃}
-
-➠Facebook↠ ${https://www.facebook.com/XmaskingNowpara?mibextid=ZbWKwL}
-
-➠Instagram↠ ${authorInsta}
-
-➠Status↠ ${𝐒𝐢𝐧𝐠𝐥𝐞 𝐏𝐫𝐨 𝐌𝐚𝐱}
-
-➠Date↠ ${date}
-
-➠Time↠ ${time}
-
-➠Uptime↠ ${uptimeString}
-
-﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋﹋
-Thanks for using ↠ \➪${botName}
-﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏`,
-      attachment:https://i.imgur.com/9KpDx4P.mp4(link)
-    });
+    if (event.body.toLowerCase().includes('ownerinfo')) {
+      api.setMessageReaction('✅', event.messageID, (err) => {}, true);
+    }
+  } catch (error) {
+    console.error('Error in ownerinfo command:', error);
+    return api.sendMessage('An error occurred while processing the command.', event.threadID);
   }
+},
 };
