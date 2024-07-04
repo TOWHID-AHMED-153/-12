@@ -1,6 +1,6 @@
 module.exports = {
     config: {
-        name: "tauhid",
+        name: "touhid",
         version: "1.0",
         author: "MR.AYAN", //** original author fb I'd : https://m.me/NOOBS.DEVELOPER.AYAN **//
         countDown: 5,
@@ -15,6 +15,6 @@ onChat: async function({
     message,
     getLang
 }) {
-    if (event.body && event.body.toLowerCase() == "tauhid") return message.reply("- 𝗠𝘆 𝗯𝗼𝘀𝘀 𝗯𝘂𝘀𝘆 𝗮𝗺𝗸𝗲 𝗯𝗼𝗹𝗲𝗻 𝗸𝗶 𝗵𝗼𝗶𝘀𝗲__😽");
+    if (event.body && event.body.toLowerCase() == "touhid") return message.reply("- 𝗠𝘆 𝗯𝗼𝘀𝘀 𝗯𝘂𝘀𝘆 𝗮𝗺𝗸𝗲 𝗯𝗼𝗹𝗲𝗻 𝗸𝗶 𝗵𝗼𝗶𝘀𝗲__😽");
 }
 };
