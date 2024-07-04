@@ -24,7 +24,7 @@ config: {
       nick: 'TAUHID'
     };
 
-    const bold = 'https://i.imgur.com/Fkch0XM.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
+    const bold = 'https://i.imgur.com/apOwvhu.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
 
     const tmpFolderPath = path.join(__dirname, 'tmp');
 
@@ -33,7 +33,7 @@ config: {
     }
 
     const videoResponse = await axios.get(bold, { responseType: 'arraybuffer' });
-    const videoPath = path.join(tmpFolderPath, 'owner_video.gif');
+    const videoPath = path.join(tmpFolderPath, 'owner_video.mp4');
 
     fs.writeFileSync(videoPath, Buffer.from(videoResponse.data, 'binary'));
 
