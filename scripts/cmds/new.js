@@ -1,4 +1,4 @@
-const axios = require('axios');
+,cmd install new.js const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
@@ -16,12 +16,12 @@ config: {
   onStart: async function ({ api, event }) {
   try {
     const ownerInfo = {
-      name: 'TAUHID',
+      name: 'TOUHID',
       gender: 'MALE',
       age: '18+',
       height: 'secret',
       facebookLink: 'https://www.facebook.com/XmaskingNowpara',
-      nick: 'TAUHID'
+      nick: 'TOUHID'
     };
 
     const bold = 'https://i.imgur.com/apOwvhu.mp4'; // Replace with your Google Drive videoid link https://drive.google.com/uc?export=download&id=here put your video id
